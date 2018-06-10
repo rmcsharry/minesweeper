@@ -1,0 +1,14 @@
+#game {
+  max-width: 300px;
+  margin: auto;
+}
+h2, h5 {
+  text-align: center;
+}
+.settings {
+  margin-bottom: 5px;
+}
+.settings div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

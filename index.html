@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Minesweeper</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="description" content="Minesweeper clone for Coolgames">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="pixi/pixi.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen">
+  <script src="cover.js"></script>
+  <script src="game.js"></script>
+  <script src="resize.js"></script>
+  <script src="menu.js"></script>
+  <script src="menuoption.js"></script>
+  <script src="tile.js"></script>
+  <script src="board.js"></script>
+  <script src="fontsettings.js"></script>
+</head>
+
+<body>
+  <div id="game">
+    <h2>Minesweeper</h2>
+    <h5>for CoolGames, by RM</h5>
+    <div class="settings">
+      <div class="setting">
+        <label for="rows">Rows</label>
+        <input type="number" id="rows" min="5" max="30" step="1">
+      </div>
+      <div class="setting">
+        <label for="rows">Cols</label>
+        <input type="number" id="cols" min="5" max="30" step="1">
+      </div>
+      <div class="setting">
+        <label for="rows">Mines</label>
+        <input type="number" id="mines" min="2" max="40" step="1">
+      </div>
+    </div>
+    <br>
+    <canvas id="board">
+    </canvas>
+    <!-- used to put save link -->
+    <div id="save-container"> 
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    // default board settings
+    let defaults = {
+      cols: 5,
+      rows: 5,
+      mines: 2,
+      tileSize: 32
+    };
+
+    //Create a Pixi Application
+    let app = new PIXI.Application({
+      width: defaults.cols * 32,
+      height: defaults.rows * 32,
+      antialias: true,    // default: false
+      transparent: false, // default: false
+      resolution: 1,
+      view: document.getElementById("board")
+    });
+
+    //Add the Pixi canvas to the DOM
+    // document.body.appendChild(app.view);
+
+    app.renderer.backgroundColor = 0x000000;
+    app.renderer.autoResize = true;
+    app.renderer.view.oncontextmenu = function (e) {
+      e.preventDefault();
+    };
+
+    // Start & end menus
+    let titleMenu;
+    let endMenu;
+    let resultMessage;
+
+    // Setup textures
+    let texTile = PIXI.Texture.fromImage("img/tile.png");
+    let texFlag = PIXI.Texture.fromImage("img/flag.png");
+    let texMine = PIXI.Texture.fromImage("img/mine.png");
+    let texHighlight = PIXI.Texture.fromImage("img/highlight.png");
+    let texCover = PIXI.Texture.fromImage("img/titlecover.png");
+
+    // Grab loader from PIXI
+    let loader = PIXI.loader;
+
+    // Game Screens
+    let pixiTitleScreen = new PIXI.Container();
+    let pixiGameScreen = new PIXI.Container();
+
+    // Rule for maximum number of mines
+    let maxMines = function (rows, cols) {
+      return Math.floor(rows * cols / 3);
+    };
+
+    window.onresize = function (event) {
+      // call to resize the stage   
+      // resize(app.renderer);
+    };
+
+    // PIXI loader
+    loader.load(Game.setup);
+    loader.once("complete", function () {
+      console.log("Resources loaded.");
+    });
+    loader.once("error", function () {
+      console.log("There was an error loading resources for the game.");
+    });  
+  </script>
+</body>
+
+</html>
