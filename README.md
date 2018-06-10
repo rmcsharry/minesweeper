@@ -16,7 +16,7 @@ Change into that folder and run:
 
 This will start the game on http://127.0.0.1:8080/
 
-# Play
+# Game settings
 
 The game defaults to 9x9 grid, with 10 mines.
 
@@ -32,3 +32,4 @@ However if you set a high number of rows/cols (eg. 30) on a small screen, you mi
 
 ![small screen](https://github.com/rmcsharry/minesweeper/blob/master/img/screenshots/smallscreen.jpg)
 
+Once started, a link will appear where you can download a JSON .txt file containing the settings for that board.
