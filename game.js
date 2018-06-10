@@ -83,13 +83,14 @@ let Game = {
     resultMessage.x = (pixiGameScreen.width / 2) - 45;
     resultMessage.y = (pixiGameScreen.height / 2) - 15;
     resultMessage.visible = false;
+
     Board.save();    
   },
   complete: function (result) {
     // Show all the mines and set flag
     Board.showAllMines();
     Game.over = true;
-
+    
     // Set end game message
     if (result)
       resultMessage.text = "You won!"
@@ -109,6 +110,7 @@ let Game = {
     this.over = false;
     endMenu.container.visible = false;
     endMenu.container.removeChildren();
+    document.getElementById('saver').remove();
     
     // re-enable inputs now game is restarting
     document.getElementById('rows').disabled = false;

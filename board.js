@@ -113,15 +113,15 @@ let Board = {
     this.mineLocations[y][x] = true;
   },
   save: function() {
-    var obj   = {rows: this.rows, cols: this.cols, mines: this.mines, mineLocations: this.mineLocations};
-    console.log(obj);
-    var data  = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-
-    var a       = document.createElement('a');
-    a.href      = 'gamedata:' + data;
-    a.download  = 'gamedata.txt';
+    let obj = {rows: this.rows, cols: this.cols, mines: this.mines, mineLocations: this.mineLocations};
+    let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+    let saver = document.getElementById('save-container');
+    
+    let a = document.createElement('a');
+    a.setAttribute('id', 'saver');
+    a.href = 'gamedata:' + data;
+    a.download = 'gamedata.txt';
     a.innerHTML = 'Download board';
-
-    document.getElementById('save-container').appendChild(a);    
+    saver.appendChild(a);
   }
 };
