@@ -6,17 +6,19 @@ This repo only contains client code. Simple javascript, no css frameworks or jqu
 The only dependency is [PIXI.js](http://www.pixijs.com/).
 
 # Setup
-You can play it online [here](https://rmcsharry.github.io/) or follow these instructions to run it locally (mac or linux):
+You can play it online [here](https://rmcsharry.github.io/) or follow these instructions to run it locally:
 
-1. Download the repo into a folder, eg into /minesweeper
+1. Install node from https://nodejs.org/en/download/
 
-2. Change into that folder and run:
+2. Download the repo into a folder, eg into /minesweeper
+
+3. Change into that folder and run:
 
 `npm install http-server`
 
 `http-server`
 
-3. Open this link in your browser: http://127.0.0.1:8080/
+4. Open this link in your browser: http://127.0.0.1:8080/
 
 
 # Game settings
