@@ -77,14 +77,13 @@ let Board = {
       };
     });
     tile.setLeftRelease(function (mouseData) {
-      // check for lose condition
-      if (tile.isMined) Game.complete(false);
-      else if (!tile.isRevealed && !Game.over) {
-        tile.revealMe();
-        // Check for win condition
-        if ((self.rows * self.cols) - self.mines === self.revealedTiles) Game.complete(true);
-      };
+      self.checkWinOrLose(tile);
     });
+    // if (!PIXI.utils.isMobile.any) {
+    //   tile.sprite.tap = function() {
+    //     self.checkWinOrLose(tile);
+    //   };
+    // };
     tile.setMouseEnter(function (mouseData) {
       if (tile.sprite.interactive && !tile.isRevealed && !Game.over) {
         tile.setTexture(texHighlight);
@@ -96,6 +95,15 @@ let Board = {
       };
     });
     pixiTiles.addChild(tile.container);
+  },
+  checkWinOrLose: function(tile) {
+    // check for lose condition
+    if (tile.isMined) Game.complete(false);
+    else if (!tile.isRevealed && !Game.over) {
+      tile.revealMe();
+      // Check for win condition
+      if ((self.rows * self.cols) - self.mines === self.revealedTiles) Game.complete(true);
+    };
   },
   createMines: function () {
     for (i = 0; i < this.mines; i++) {

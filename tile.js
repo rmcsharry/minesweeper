@@ -1,4 +1,6 @@
 function Tile(x, y, isMined, tileSize) {
+  let self = this;
+  let timer = null;
   this.x = x;
   this.y = y;
   this.isMined = isMined;
@@ -24,11 +26,22 @@ function Tile(x, y, isMined, tileSize) {
   this.container.addChild(this.sprite);
   this.container.addChild(this.mineCount);
   this.container.addChild(this.infoSprite);
+  this.sprite.touchstart = function() {
+    // use timer to detect touch held and fire rightclick when timer expires
+    timer = setTimeout(() => {
+      self.sprite.rightclick(); 
+      timer = null;
+    }, 500);
+  };
+  this.sprite.touchend = function() {
+    // if timer is still active when touch ends, then fire a normal click
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+      self.sprite.click();
+    };
+  }  
 };
-
-// Tile.prototype.isRevealed = function(neighbour){
-//   return this.revealed || this.isBomb;
-// };
 
 Tile.prototype.setPosition = function (x, y) {
   this.x = x;
@@ -40,7 +53,7 @@ Tile.prototype.setPosition = function (x, y) {
   this.infoSprite.x = 0;
   this.infoSprite.y = 0;
   this.infoSprite.width = this.tileSize;
-  this.infoSprite.height = this.tileSize;  
+  this.infoSprite.height = this.tileSize;
 };
 
 // Tile.prototype.resetMineCount = function () {
@@ -59,9 +72,9 @@ Tile.prototype.setTexture = function (texture) {
 
 Tile.prototype.setLeftRelease = function (fn) {
   let tile = this;
-  this.sprite.on('pointerdown', function (mouseData) {
+  this.sprite.click = function (mouseData) {
     fn(tile, mouseData);
-  });
+  };
 };
 
 Tile.prototype.setRightRelease = function (fn) {
