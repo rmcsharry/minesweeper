@@ -72,7 +72,7 @@ Tile.prototype.setTexture = function (texture) {
 
 Tile.prototype.setLeftRelease = function (fn) {
   let tile = this;
-  this.sprite.click = function (mouseData) {
+  this.sprite.click = function (tile, mouseData) {
     fn(tile, mouseData);
   };
 };

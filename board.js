@@ -97,12 +97,13 @@ let Board = {
     pixiTiles.addChild(tile.container);
   },
   checkWinOrLose: function(tile) {
+    console.log('checking:', tile);
     // check for lose condition
     if (tile.isMined) Game.complete(false);
     else if (!tile.isRevealed && !Game.over) {
       tile.revealMe();
       // Check for win condition
-      if ((self.rows * self.cols) - self.mines === self.revealedTiles) Game.complete(true);
+      if ((this.rows * this.cols) - this.mines === this.revealedTiles) Game.complete(true);
     };
   },
   createMines: function () {
