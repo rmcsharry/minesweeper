@@ -8,7 +8,7 @@ function MenuOption(title, textOptions, fillColour) {
   this.graphic.click = function (mouseData) {
     self.performSelect(mouseData);
   };
-  this.setPressAction(null);
+  this.pointertap(null);
   this.title = "";
   this.titleGraphic = null;
   this.setTitleText(title, textOptions);
@@ -41,7 +41,7 @@ MenuOption.prototype.setTitleText = function (text, textOptions) {
   this.titleGraphic = new PIXI.Text(text, textOptions);
 }
 
-MenuOption.prototype.setPressAction = function (callback) {
+MenuOption.prototype.pointertap = function (callback) {
   this.actionCallback = callback;
 }
 
