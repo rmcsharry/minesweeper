@@ -59,9 +59,9 @@ Tile.prototype.setTexture = function (texture) {
 
 Tile.prototype.setLeftRelease = function (fn) {
   let tile = this;
-  this.sprite.pointertap = function (mouseData) {
+  this.sprite.on('pointerdown', function (mouseData) {
     fn(tile, mouseData);
-  };
+  });
 };
 
 Tile.prototype.setRightRelease = function (fn) {

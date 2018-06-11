@@ -30,7 +30,7 @@ let Game = {
 
     // Setup start menu button
     let startBtn = new MenuOption("Start Sweeping!", menuFont, 0x927751);
-    startBtn.pointertap(function () {
+    startBtn.setPressAction(function () {
       Game.setupBoard();
     });
     titleMenu.addMenuOption(startBtn, defaults.tileSize);
@@ -100,7 +100,7 @@ let Game = {
 
     // Set up and display end game button
     endBtn = new MenuOption("Restart", menuFont, 0x000000);
-    endBtn.pointertap(function () {
+    endBtn.setPressAction(function () {
       Game.restart();
     });
     endMenu.addMenuOption(endBtn, Board.tileSize);
