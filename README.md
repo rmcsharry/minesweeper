@@ -33,7 +33,7 @@ The board resizes automatically to your chosen settings when you click "Start Sw
 
 The board will fit any screen size from 300px wide up.
 
-However if you set a high number of rows/cols (eg. 30) on a small screen, you might not be able to see the squars. For example, on 160 pixels wide it would look like this:
+However if you set a high number of rows/cols (eg. 30) on a small screen, you might not be able to see the squares. For example, on 160 pixels wide it would look like this:
 
 ![small screen](https://github.com/rmcsharry/minesweeper/blob/master/img/screenshots/smallscreen.jpg)
 
