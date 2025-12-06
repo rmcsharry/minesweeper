@@ -132,5 +132,10 @@ let Board = {
     a.download = 'gamedata.txt';
     a.innerHTML = 'Download board';
     saver.appendChild(a);
+  },
+  disableInteractions: function() {
+    this.readBoard(function(tile) {
+      tile.enableInteraction(false);
+    });
   }
 };

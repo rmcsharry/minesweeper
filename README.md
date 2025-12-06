@@ -37,5 +37,4 @@ Once started, a link will appear where you can download a JSON .txt file contain
 
 # Known Issues
 
-1. Double clicking on a square causes unexpected behaviour such as prematurely ending the game.
-2. When the game is finished, clicking anywhere except the restart button will cause multiple restart buttons to appear.
+1. When the game is finished, clicking anywhere except the restart button will cause multiple restart buttons to appear.

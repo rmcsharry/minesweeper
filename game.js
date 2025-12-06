@@ -91,6 +91,8 @@ let Game = {
     Board.showAllMines();
     Game.over = true;
     
+    // TODO: disable further interactions with the game board (only restart should function)
+    
     // Set end game message
     if (result)
       resultMessage.text = "You won!"
